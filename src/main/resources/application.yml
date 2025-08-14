@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: sbb
+  output:
+    ansi:
+      enabled: always
+  profiles:
+    active: dev
+

@@ -58,4 +58,12 @@ class QuestionRepositoryTest {
         // SELECT * FROM question WHERE subject = 'sbb가 무엇인가요?' AND content = 'sbb에 대해서 알고 싶습니다.'
         assertThat(q.getId()).isEqualTo(1);
     }
+
+    @Test
+    @DisplayName("findBySubjectLike")
+    void t5() {
+        List<Question> qList = this.questionRepository.findBySubjectLike("sbb%");
+        Question q = qList.get(0);
+        assertThat(q.getSubject()).isEqualTo("sbb가 무엇인가요?");
+    }
 }

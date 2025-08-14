@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Getter
 @Setter
@@ -21,4 +22,7 @@ public class Question {
     private String content;
 
     private LocalDateTime createDate;
+
+    @OneToMany(mappedBy = "question", cascade = CascadeType.REMOVE)
+    private List<Answer> answerList; // ANSWER_ID_LIST 같은 칼럼은 생기지 않는다.
 }

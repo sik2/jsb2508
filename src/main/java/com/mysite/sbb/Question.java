@@ -24,5 +24,5 @@ public class Question {
     private LocalDateTime createDate;
 
     @OneToMany(mappedBy = "question", cascade = CascadeType.REMOVE)
-    private List<Answer> answerList; // ANSWER_ID_LIST 같은 칼럼은 생기지 않는다.
+    private List<Answer> answerList;
 }

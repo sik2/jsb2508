@@ -111,4 +111,21 @@ class QuestionRepositoryTest {
 
         assertThat(answer.getId()).isGreaterThan(0);
     }
+
+    @Test
+    @DisplayName("답변 생성 by oneToMany")
+    @Transactional
+    void t9 () {
+        Question question = questionRepository.findById(2).get();
+
+        int beforeCount = question.getAnswerList().size();
+
+        Answer answer = question.addAnswer("네 자동으로 생성됩니다.");
+
+        assertThat(answer.getId()).isEqualTo(null);
+
+        int afterCount = question.getAnswerList().size();
+
+        assertThat(afterCount).isEqualTo(beforeCount + 1);
+    }
 }

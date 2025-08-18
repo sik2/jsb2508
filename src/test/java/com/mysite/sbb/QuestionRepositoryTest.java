@@ -1,5 +1,6 @@
 package com.mysite.sbb;
 
+import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -69,7 +70,8 @@ class QuestionRepositoryTest {
 
     @Test
     @DisplayName("수정")
-    void t0() { // 가장 먼저 실행시키기 위해서 t6가 아닌 t0으로 메서드명 변경
+    @Transactional
+    void t6() {
         Question question = questionRepository.findById(1).get();
         assertThat(question).isNotNull();
 

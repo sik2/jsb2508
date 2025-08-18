@@ -25,7 +25,7 @@ public class Question {
     private LocalDateTime createDate;
 
     // 기본적으로 Lazy 모드, EAGER 변경시 fetch = FetchType.EAGER 추가
-    @OneToMany(mappedBy = "question", fetch = FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+    @OneToMany(mappedBy = "question", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     private List<Answer> answerList = new ArrayList<>();
 
     public Answer addAnswer(String content) {

@@ -20,6 +20,6 @@ public class Answer {
     private LocalDateTime createDate;
 
     // 기본적으로 Eager 모드, LAZY 변경시 fetch = FetchType.LAZY 추가
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     private Question question;  // QUESTION_ID 칼럼
 }

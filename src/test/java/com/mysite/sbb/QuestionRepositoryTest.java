@@ -16,6 +16,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @ActiveProfiles("test")
 @SpringBootTest
+@Transactional
 class QuestionRepositoryTest {
 
     @Autowired
@@ -73,7 +74,6 @@ class QuestionRepositoryTest {
 
     @Test
     @DisplayName("수정")
-    @Transactional
     void t6() {
         Question question = questionRepository.findById(1).get();
         assertThat(question).isNotNull();
@@ -87,7 +87,6 @@ class QuestionRepositoryTest {
 
     @Test
     @DisplayName("삭제")
-    @Transactional
     void t7() {
         assertThat(questionRepository.count()).isEqualTo(2);
 
@@ -99,7 +98,6 @@ class QuestionRepositoryTest {
 
     @Test
     @DisplayName("답변 생성")
-    @Transactional
     void t8 () {
         Question question = questionRepository.findById(2).get();
 
@@ -114,7 +112,6 @@ class QuestionRepositoryTest {
 
     @Test
     @DisplayName("답변 생성 by oneToMany")
-    @Transactional
     void t9 () {
         Question question = questionRepository.findById(2).get();
 
@@ -140,7 +137,6 @@ class QuestionRepositoryTest {
 
     @Test
     @DisplayName("답변 조회 by oneToMany")
-//    @Transactional
     void t11 () {
         Question question = questionRepository.findById(2).get();
 
@@ -153,7 +149,6 @@ class QuestionRepositoryTest {
 
     @Test
     @DisplayName("findAnswer by question")
-//    @Transactional
     void t12() {
         Question question = questionRepository.findById(2).get();
 

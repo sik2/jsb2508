@@ -128,4 +128,37 @@ class QuestionRepositoryTest {
 
         assertThat(afterCount).isEqualTo(beforeCount + 1);
     }
+
+    @Test
+    @DisplayName("답변 조회")
+    void t10 () {
+        Answer answer = answerRepository.findById(1).get();
+
+        assertThat(answer.getId()).isEqualTo(1);
+    }
+
+
+    @Test
+    @DisplayName("답변 조회 by oneToMany")
+//    @Transactional
+    void t11 () {
+        Question question = questionRepository.findById(2).get();
+
+        List<Answer> answers = question.getAnswerList();
+        assertThat(answers.size()).isEqualTo(1);
+
+        Answer answer = answers.get(0);
+        assertThat(answer.getContent()).isEqualTo("네 자동으로 생성됩니다.");
+    }
+
+    @Test
+    @DisplayName("findAnswer by question")
+//    @Transactional
+    void t12() {
+        Question question = questionRepository.findById(2).get();
+
+        Answer answer = question.getAnswerList().get(0);
+
+        assertThat(answer.getId()).isEqualTo(1);
+    }
 }
